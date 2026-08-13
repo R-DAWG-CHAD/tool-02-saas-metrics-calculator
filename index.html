@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Metrics & Unit Economics Calculator | Zero-Login Free Tool</title>
+  <meta name="description" content="Calculate vital SaaS financial metrics: MRR, ARR, Net Churn Rate, LTV, CAC Ratio, CAC Payback Period (Months), and SaaS Quick Ratio instantly.">
+  <meta name="keywords" content="saas metrics calculator, mrr calculator, saas ltv cac ratio, payback period calculator, churn rate calculator, saas unit economics">
+  <link rel="canonical" href="https://saasmetricscalc.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saasmetricscalc.app/">
+  <meta property="og:title" content="SaaS Metrics & Unit Economics Calculator">
+  <meta property="og:description" content="Free zero-login tool to evaluate SaaS startup unit economics, LTV:CAC, churn impact, and payback periods.">
+
+  <!-- JSON-LD Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SaaS Metrics Calculator",
+    "url": "https://saasmetricscalc.app/",
+    "description": "Financial unit economics dashboard for SaaS founders, CFOs, and startup investors.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+
+  <header class="navbar">
+    <div class="logo">
+      <span class="icon">🚀</span>
+      <span class="title">SaaS Unit Architect</span>
+    </div>
+    <div class="badge">Zero-Login Investor Grade</div>
+  </header>
+
+  <main class="container">
+    <header class="hero">
+      <h1>SaaS Metrics & Unit Economics Dashboard</h1>
+      <p>Analyze key growth metrics, customer lifetime value (LTV), acquisition cost payback periods, churn sensitivity, and SaaS Quick Ratio in real time.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Input Panel -->
+      <section class="card glass-panel">
+        <h2><span class="step-num">1</span> Revenue & Customer Counts</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="totalCustomers">Active Customers</label>
+            <input type="number" id="totalCustomers" value="450" min="1">
+          </div>
+          <div class="form-group">
+            <label for="arpu">ARPU (Avg Monthly Rev/User)</label>
+            <div class="input-wrapper">
+              <span class="prefix">$</span>
+              <input type="number" id="arpu" value="120" min="1" step="5">
+            </div>
+          </div>
+        </div>
+
+        <h2><span class="step-num">2</span> Churn & Retention</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="logoChurn">Monthly Customer Churn (%)</label>
+            <div class="input-wrapper">
+              <input type="number" id="logoChurn" value="2.5" min="0.1" max="50" step="0.1">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="expansionRate">Monthly Expansion Rate (%)</label>
+            <div class="input-wrapper">
+              <input type="number" id="expansionRate" value="1.2" min="0" max="50" step="0.1">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+        </div>
+
+        <h2><span class="step-num">3</span> Acquisition & Margin</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="monthlySalesMarketing">Monthly S&M Spend ($)</label>
+            <div class="input-wrapper">
+              <span class="prefix">$</span>
+              <input type="number" id="monthlySalesMarketing" value="18000" min="0" step="500">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newCustomersMonth">New Customers Acquired / Mo</label>
+            <input type="number" id="newCustomersMonth" value="30" min="1">
+          </div>
+        </div>
+
+        <div class="form-group margin-top">
+          <label for="grossMargin">Gross Margin (%)</label>
+          <div class="input-wrapper">
+            <input type="number" id="grossMargin" value="80" min="10" max="100" step="1">
+            <span class="suffix">%</span>
+          </div>
+          <span class="help-text">COGS including hosting, customer support, and third-party APIs.</span>
+        </div>
+
+        <h2><span class="step-num">4</span> Quick Ratio Dynamics</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newMrrAdded">New MRR Added ($/mo)</label>
+            <div class="input-wrapper">
+              <span class="prefix">$</span>
+              <input type="number" id="newMrrAdded" value="3600" min="0">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mrrLostChurn">MRR Lost to Churn ($/mo)</label>
+            <div class="input-wrapper">
+              <span class="prefix">$</span>
+              <input type="number" id="mrrLostChurn" value="1350" min="0">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Output / Results Panel -->
+      <section class="card glass-panel results-section">
+        <h2>Unit Economics Health Report</h2>
+
+        <div class="highlight-box">
+          <span class="highlight-label">Monthly Recurring Revenue (MRR)</span>
+          <div class="highlight-value" id="mrrDisplay">$54,000</div>
+          <span class="highlight-sub" id="arrDisplay">Annual Recurring Revenue (ARR): $648,000</span>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-title">Customer Lifetime Value (LTV)</span>
+            <span class="metric-value" id="ltvDisplay">$0.00</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Customer Acquisition Cost (CAC)</span>
+            <span class="metric-value" id="cacDisplay">$0.00</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">LTV : CAC Ratio</span>
+            <span class="metric-value" id="ltvCacRatioDisplay">0.0x</span>
+            <span class="status-badge" id="ltvBadge">Calculating...</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">CAC Payback Period</span>
+            <span class="metric-value" id="paybackDisplay">0 Mos</span>
+            <span class="status-badge" id="paybackBadge">Calculating...</span>
+          </div>
+        </div>
+
+        <div class="secondary-metrics">
+          <div class="sec-row">
+            <span>Net Revenue Churn Rate:</span>
+            <strong id="netChurnDisplay">1.3% / mo</strong>
+          </div>
+          <div class="sec-row">
+            <span>Average Customer Lifetime:</span>
+            <strong id="avgLifespanDisplay">40 months</strong>
+          </div>
+          <div class="sec-row">
+            <span>SaaS Quick Ratio:</span>
+            <strong id="quickRatioDisplay">3.2 (Healthy Growth)</strong>
+          </div>
+        </div>
+
+        <!-- Churn Sensitivity Simulator -->
+        <div class="simulator-box">
+          <h3>📉 Churn Sensitivity Simulator</h3>
+          <p class="sim-desc">See how reducing churn impacts 3-Year Cumulative Revenue:</p>
+          <div class="form-group">
+            <label for="churnSimSlider">Simulated Monthly Churn: <span id="simChurnVal">2.5%</span></label>
+            <input type="range" id="churnSimSlider" min="0.5" max="8.0" step="0.1" value="2.5">
+          </div>
+          <div class="sim-result">
+            <span>Projected 3-Year Revenue:</span>
+            <strong id="simRevenueDisplay">$0</strong>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SEO Informational Article Section -->
+    <article class="card glass-panel seo-content">
+      <h2>Understanding SaaS Unit Economics Benchmarks</h2>
+      <p>Building a scalable SaaS business requires continuous monitoring of core operational metrics. Top venture capitalists evaluate early-stage software companies using standard benchmarks:</p>
+
+      <ul>
+        <li><strong>LTV:CAC Ratio > 3.0x:</strong> An LTV:CAC ratio above 3.0 indicates strong product-market fit and efficient customer acquisition. Ratios below 1.0 mean you are losing money on every customer.</li>
+        <li><strong>CAC Payback Period < 12 Months:</strong> Capital-efficient SaaS startups aim to recover customer acquisition costs in less than 12 months. Payback periods exceeding 18-24 months indicate heavy cash burn risk.</li>
+        <li><strong>SaaS Quick Ratio > 4.0:</strong> Calculated as <code>(New MRR + Expansion MRR) / (Contraction MRR + Churned MRR)</code>. A Quick Ratio above 4.0 demonstrates hyper-growth efficiency.</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 SaaS Unit Architect. Free & Open-Source Startup Utility.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
